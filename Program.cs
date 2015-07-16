@@ -119,7 +119,7 @@ namespace AnyApp
                 return;
             }
 
-            var anyAppRegKey = rootRegKey.CreateSubKey("AnyApp", RegistryKeyPermissionCheck.ReadWriteSubTree);
+            var anyAppRegKey = rootRegKey.CreateSubKey("anyapp", RegistryKeyPermissionCheck.ReadWriteSubTree);
             if (anyAppRegKey == null)
             {
                 regKeyString += @"\AnyApp";
@@ -127,6 +127,7 @@ namespace AnyApp
                 return;
             }
             anyAppRegKey.SetValue(String.Empty, "URL:AnyApp Protocol");
+            anyAppRegKey.SetValue("URL Protocol", String.Empty);
 
             anyAppRegKey = anyAppRegKey.CreateSubKey("shell");
             if (anyAppRegKey == null)
@@ -151,7 +152,9 @@ namespace AnyApp
                 Bail(String.Format("{0} not found.", regKeyString));
                 return;
             }
-            var pathToExe = Assembly.GetExecutingAssembly().CodeBase;
+
+            var uri = new Uri(Assembly.GetExecutingAssembly().CodeBase);
+            var pathToExe = uri.LocalPath;
             anyAppRegKey.SetValue(String.Empty, String.Format("\"{0}\" \"%1\"", pathToExe));
 
             anyAppRegKey.Close();
