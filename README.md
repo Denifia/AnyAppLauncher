@@ -9,7 +9,7 @@ Simply download the app and run it to install. It registers itself as a URI Sche
 ## How to use
 Create a URI with the following format:
 <pre>
- anyapp://chrome:https@example.com:8042/over/there/index.dtb?type=animal
+ anyapp://chrome:https@example.com:8042/over/there/index.htm?type=animal
  \____/   \____/ \___/ \_________/ \__/ 
    |        |      |        |       |    
  scheme    app    new     host     port  
@@ -19,7 +19,7 @@ Note: The above example of a URI was based on the [URI scheme](https://en.wikipe
 
 The above URI is converted to this new URI:
 <pre>
-https://example.com:8042/over/there/index.dtb?type=animal
+https://example.com:8042/over/there/index.htm?type=animal
 </pre>
 
 Chrome is then opened with the new URI as the argument; opening the website.
@@ -37,9 +37,9 @@ This is based of the default conversion format and configuration.
 </applicationSection>
 ```
 
-To open the same website in Internet Explorer, use the following link:
+To open the same website in Internet Explorer, add an "ie" application to the config file then use the following link:
 <pre>
-anyapp://ie:https@example.com:8042/over/there/index.dtb?type=animal
+anyapp://ie:https@example.com:8042/over/there/index.htm?type=animal
 </pre>
 
 
